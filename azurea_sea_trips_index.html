@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Azurea Sea Trips - Boat trips, snorkeling, fishing, islands and overnight adventures in Hurghada." />
+  <title>Azurea Sea Trips | Hurghada</title>
+  <style>
+    :root{
+      --bg:#071826; --card:#0f2b42; --line:rgba(255,255,255,.12);
+      --gold:#d6a34b; --text:#f5f8fc; --muted:#b8c7d8; --accent:#4fb4ff;
+      --shadow:0 18px 45px rgba(0,0,0,.25); --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);
+      background:radial-gradient(circle at 20% 20%, rgba(79,180,255,.16), transparent 30%),
+      radial-gradient(circle at 80% 10%, rgba(214,163,75,.14), transparent 26%),
+      linear-gradient(180deg, #061421 0%, #081a2a 35%, #061421 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px, calc(100% - 28px)); margin:0 auto}
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); background:rgba(6,20,33,.72); border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:44px; height:44px; border-radius:50%; background:conic-gradient(from 180deg, var(--gold), #fff3cb, var(--accent), #0c2b44); position:relative; box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+    .logo:before{content:"⛵"; position:absolute; inset:0; display:grid; place-items:center; font-size:20px}
+    .brand h1{margin:0; font-size:1.05rem; line-height:1.15}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:.82rem}
+    .nav-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .btn{border:0; cursor:pointer; border-radius:999px; padding:11px 16px; font-weight:700; transition:.2s ease; display:inline-flex; align-items:center; gap:8px}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg, var(--gold), #f3d28c); color:#162535}
+    .btn-ghost{background:rgba(255,255,255,.07); color:var(--text); border:1px solid var(--line)}
+    .hero{padding:34px 0 18px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:18px; align-items:stretch}
+    .panel{border:1px solid var(--line); background:linear-gradient(180deg, rgba(15,43,66,.88), rgba(10,29,47,.9)); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero-main{padding:28px; min-height:460px; position:relative; overflow:hidden}
+    .waves{position:absolute; inset:auto -10% -30% -10%; height:280px; opacity:.35; pointer-events:none; background:radial-gradient(circle at 20% 20%, rgba(79,180,255,.8), transparent 18%), radial-gradient(circle at 60% 40%, rgba(214,163,75,.72), transparent 16%), linear-gradient(135deg, rgba(255,255,255,.22), transparent 30%), linear-gradient(180deg, rgba(79,180,255,.16), rgba(79,180,255,.02)); filter:blur(18px); transform:rotate(-8deg)}
+    .hero-tag{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(214,163,75,.35); background:rgba(214,163,75,.12); color:#ffe9bb; border-radius:999px; padding:8px 12px; font-size:.86rem; margin-bottom:14px}
+    .hero h2{margin:0; font-size:clamp(2rem, 4vw, 4.1rem); line-height:1.02; letter-spacing:.2px}
+    .hero h2 .gold{color:#ffd98a}
+    .hero p{max-width:58ch; color:var(--muted); font-size:1rem; line-height:1.8; margin:16px 0 0}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .hero-stats{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:24px}
+    .stat{border:1px solid var(--line); background:rgba(255,255,255,.04); border-radius:18px; padding:14px}
+    .stat b{display:block; font-size:1.05rem; margin-bottom:4px}
+    .stat span{color:var(--muted); font-size:.92rem}
+    .hero-side{display:flex; flex-direction:column; gap:18px}
+    .side-card{padding:22px}
+    .side-card h3{margin:0 0 10px; font-size:1.25rem}
+    .mini-list{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .mini-list li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); line-height:1.5}
+    .dot{width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--gold)); margin-top:6px; flex:0 0 auto}
+    .booking-banner{background:linear-gradient(135deg, rgba(214,163,75,.16), rgba(79,180,255,.12)); border:1px solid rgba(255,255,255,.14); border-radius:22px; padding:18px 18px 16px}
+    .booking-banner strong{display:block; font-size:1.05rem}
+    .booking-banner span{color:var(--muted); font-size:.92rem}
+    .section{padding:18px 0 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:12px; margin:14px 0 14px}
+    .section-head h3{margin:0; font-size:1.55rem}
+    .section-head p{margin:0; color:var(--muted)}
+    .cards{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px}
+    .trip-card{padding:20px; position:relative; overflow:hidden; min-height:220px}
+    .trip-card:before{content:""; position:absolute; inset:-40% -18% auto auto; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(214,163,75,.22), transparent 66%); pointer-events:none}
+    .trip-card h4{margin:0 0 8px; font-size:1.35rem}
+    .trip-card .time{color:#ffd98a; font-weight:700; margin-bottom:12px}
+    .trip-card ul{margin:0; padding-left:18px; color:var(--muted); line-height:1.75}
+    .trip-card .tag{display:inline-block; margin-top:16px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#dce7f3; font-size:.92rem}
+    .gallery{display:grid; grid-template-columns:repeat(4, 1fr); gap:12px}
+    .shot{min-height:160px; border-radius:20px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.02)), linear-gradient(135deg, rgba(79,180,255,.22), rgba(214,163,75,.16)); position:relative; overflow:hidden}
+    .shot:nth-child(2){background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)), linear-gradient(135deg, rgba(79,180,255,.26), rgba(0,0,0,.06))}
+    .shot:nth-child(3){background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)), linear-gradient(135deg, rgba(214,163,75,.20), rgba(79,180,255,.12))}
+    .shot:nth-child(4){background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)), linear-gradient(135deg, rgba(255,255,255,.05), rgba(79,180,255,.18))}
+    .shot:after{content:""; position:absolute; inset:auto -20% -25% -20%; height:110px; border-radius:50%; background:rgba(255,255,255,.12); filter:blur(10px)}
+    .shot span{position:absolute; left:14px; bottom:14px; z-index:1; font-weight:700; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35)}
+    .booking{display:grid; grid-template-columns:1fr .9fr; gap:16px; align-items:stretch}
+    form{padding:22px}
+    .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .field{display:flex; flex-direction:column; gap:7px}
+    .field.full{grid-column:1 / -1}
+    label{font-size:.92rem; color:#d8e4ef}
+    input, select, textarea{width:100%; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.05); color:var(--text); padding:13px 14px; outline:none; font:inherit}
+    input::placeholder, textarea::placeholder{color:#90a4b8}
+    textarea{min-height:112px; resize:vertical}
+    .form-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .contact-card{padding:22px; display:flex; flex-direction:column; gap:12px}
+    .contact-item{display:flex; justify-content:space-between; gap:12px; align-items:center; padding:14px 16px; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.04)}
+    .contact-item strong{display:block}
+    .contact-item span{color:var(--muted); font-size:.92rem}
+    .footer{padding:18px 0 34px; color:var(--muted); text-align:center}
+    .note{font-size:.92rem; color:var(--muted); margin-top:10px; line-height:1.6}
+    .arabic{display:none}
+    html[dir="rtl"] body{direction:rtl}
+    html[dir="rtl"] .brand, html[dir="rtl"] .hero-actions, html[dir="rtl"] .form-actions, html[dir="rtl"] .contact-item{direction:rtl}
+    @media (max-width: 900px){ .hero-grid, .booking, .cards{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} .hero-main{min-height:auto} }
+    @media (max-width: 640px){ .nav-inner{flex-direction:column; align-items:flex-start} .grid, .hero-stats, .gallery{grid-template-columns:1fr} .hero{padding-top:18px} .hero-main, .side-card, .trip-card, form, .contact-card{padding:18px} .hero h2{font-size:2.05rem} .section-head{flex-direction:column; align-items:flex-start} }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Azurea Sea Trips</h1>
+          <p class="en">Hurghada • Red Sea adventures</p>
+          <p class="arabic">الغردقة • رحلات بحرية في البحر الأحمر</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" id="langBtn" type="button">🇪🇬 العربية</button>
+        <a class="btn btn-ghost" href="#booking">Book Now</a>
+        <a class="btn btn-primary" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="panel hero-main">
+          <div class="waves"></div>
+          <div class="hero-tag en">🌊 Daily & Overnight Boat Trips in Hurghada</div>
+          <div class="hero-tag arabic">🌊 رحلات يومية ورحلات بيات في الغردقة</div>
+
+          <h2 class="en">Discover the <span class="gold">Red Sea</span><br>with Azurea</h2>
+          <h2 class="arabic">اكتشف <span class="gold">البحر الأحمر</span><br>مع أزوريا</h2>
+
+          <p class="en">Snorkeling, fishing, island visits, sunny sea days and overnight trips. Book directly from the website in just a few taps.</p>
+          <p class="arabic">سنوركلينج، صيد، زيارة الجزر، رحلات يومية ممتعة ورحلات بيات. احجز مباشرة من الموقع بسهولة وفي ثواني.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">🚤 Book Now</a>
+            <a class="btn btn-ghost" href="#trips">See Trips</a>
+            <a class="btn btn-ghost" href="#gallery">Gallery</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <b class="en">Daily Trips</b><b class="arabic">رحلات يومية</b>
+              <span class="en">9:00 AM – 5:00 PM</span>
+              <span class="arabic">من 9 صباحًا إلى 5 مساءً</span>
+            </div>
+            <div class="stat">
+              <b class="en">Overnight Trips</b><b class="arabic">رحلات بيات</b>
+              <span class="en">Full sea adventure</span>
+              <span class="arabic">تجربة بحرية كاملة</span>
+            </div>
+            <div class="stat">
+              <b class="en">Direct Booking</b><b class="arabic">حجز مباشر</b>
+              <span class="en">From the page</span>
+              <span class="arabic">من داخل الصفحة</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="panel side-card">
+            <h3 class="en">What you can do</h3>
+            <h3 class="arabic">الرحلة فيها إيه؟</h3>
+            <ul class="mini-list en">
+              <li><span class="dot"></span><span>Snorkeling in clear water spots</span></li>
+              <li><span class="dot"></span><span>Fishing time on the boat</span></li>
+              <li><span class="dot"></span><span>Islands and white beaches</span></li>
+              <li><span class="dot"></span><span>Great vibes and sea photos</span></li>
+            </ul>
+            <ul class="mini-list arabic">
+              <li><span class="dot"></span><span>سنوركلينج في أفضل أماكن المياه الصافية</span></li>
+              <li><span class="dot"></span><span>وقت صيد على المركب</span></li>
+              <li><span class="dot"></span><span>زيارة الجزر والشواطئ البيضاء</span></li>
+              <li><span class="dot"></span><span>أجواء حلوة وتصوير على البحر</span></li>
+            </ul>
+          </div>
+
+          <div class="booking-banner panel">
+            <strong class="en">Fast booking, simple and direct</strong>
+            <strong class="arabic">حجز سريع وبسيط ومباشر</strong>
+            <span class="en">Fill the form and send your request on WhatsApp.</span>
+            <span class="arabic">املأ الفورم وأرسل طلبك على واتساب.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trips">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="en">Trips</h3>
+            <h3 class="arabic">الرحلات</h3>
+            <p class="en">Choose the experience that fits your day.</p>
+            <p class="arabic">اختار الرحلة المناسبة ليومك.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="panel trip-card">
+            <h4 class="en">Daily Trip</h4><h4 class="arabic">الرحلة اليومية</h4>
+            <div class="time en">From 9:00 AM to 5:00 PM</div>
+            <div class="time arabic">من 9 صباحًا إلى 5 مساءً</div>
+            <ul class="en"><li>Snorkeling in the best spots</li><li>Fishing time</li><li>Island visit</li><li>Open sea views and photos</li></ul>
+            <ul class="arabic"><li>سنوركلينج في أفضل الأماكن</li><li>وقت صيد</li><li>زيارة الجزر</li><li>مناظر بحر مفتوح وتصوير</li></ul>
+            <span class="tag en">Perfect for families and friends</span>
+            <span class="tag arabic">مناسبة للعائلات والأصحاب</span>
+          </article>
+
+          <article class="panel trip-card">
+            <h4 class="en">Overnight Trip</h4><h4 class="arabic">رحلة بيات</h4>
+            <div class="time en">Full day & night sea experience</div>
+            <div class="time arabic">تجربة بحرية يوم كامل وليلة كاملة</div>
+            <ul class="en"><li>More time for snorkeling</li><li>Fishing at different times</li><li>Island time and sunset views</li><li>Relaxing vibes on board</li></ul>
+            <ul class="arabic"><li>وقت أكثر للسنوركلينج</li><li>صيد في أوقات مختلفة</li><li>وقت للجزر ومشاهدة الغروب</li><li>أجواء استرخاء على المركب</li></ul>
+            <span class="tag en">Best for a full adventure</span>
+            <span class="tag arabic">الأفضل لتجربة كاملة</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="en">Gallery</h3><h3 class="arabic">معرض الصور</h3>
+            <p class="en">Replace these placeholders with your own boat photos and videos later.</p>
+            <p class="arabic">استبدل هذه الأماكن بصور وفيديوهات المركب لاحقًا.</p>
+          </div>
+        </div>
+        <div class="gallery">
+          <div class="shot"><span class="en">Boat Views</span><span class="arabic">مناظر المركب</span></div>
+          <div class="shot"><span class="en">Snorkeling</span><span class="arabic">سنوركلينج</span></div>
+          <div class="shot"><span class="en">Island Stop</span><span class="arabic">وقفة جزيرة</span></div>
+          <div class="shot"><span class="en">Sunset Mood</span><span class="arabic">أجواء الغروب</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="container booking">
+        <form class="panel" id="bookingForm">
+          <div class="section-head" style="margin-top:0">
+            <div>
+              <h3 class="en">Book from the page</h3><h3 class="arabic">احجز من الصفحة</h3>
+              <p class="en">The form will open a WhatsApp message with your booking details.</p>
+              <p class="arabic">الفورم سيفتح رسالة واتساب فيها تفاصيل الحجز.</p>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label class="en" for="name">Full Name</label><label class="arabic" for="name">الاسم</label>
+              <input id="name" type="text" placeholder="Omar" required />
+            </div>
+            <div class="field">
+              <label class="en" for="phone">Phone / WhatsApp</label><label class="arabic" for="phone">رقم الهاتف / واتساب</label>
+              <input id="phone" type="tel" placeholder="01500309444" required />
+            </div>
+            <div class="field">
+              <label class="en" for="trip">Trip Type</label><label class="arabic" for="trip">نوع الرحلة</label>
+              <select id="trip" required>
+                <option value="Daily Trip">Daily Trip</option>
+                <option value="Overnight Trip">Overnight Trip</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="en" for="date">Trip Date</label><label class="arabic" for="date">تاريخ الرحلة</label>
+              <input id="date" type="date" required />
+            </div>
+            <div class="field">
+              <label class="en" for="guests">Guests</label><label class="arabic" for="guests">عدد الأشخاص</label>
+              <input id="guests" type="number" min="1" value="2" required />
+            </div>
+            <div class="field">
+              <label class="en" for="langChoice">Language</label><label class="arabic" for="langChoice">اللغة</label>
+              <select id="langChoice"><option value="English">English</option><option value="Arabic">Arabic</option></select>
+            </div>
+            <div class="field full">
+              <label class="en" for="notes">Notes</label><label class="arabic" for="notes">ملاحظات</label>
+              <textarea id="notes" placeholder="Any special request..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send Booking on WhatsApp</button>
+            <a class="btn btn-ghost" href="https://t.me/boost/hurgada_sea_trips" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <p class="note en">Tip: if the WhatsApp number is on WhatsApp, this opens a ready-made booking message automatically.</p>
+          <p class="note arabic">ملاحظة: لو الرقم عليه واتساب، هتفتح رسالة حجز جاهزة تلقائيًا.</p>
+        </form>
+
+        <aside class="panel contact-card" id="contact">
+          <div class="section-head" style="margin-top:0">
+            <div>
+              <h3 class="en">Contact</h3><h3 class="arabic">تواصل معنا</h3>
+              <p class="en">Keep every contact button visible and easy to tap.</p>
+              <p class="arabic">خلي أزرار التواصل واضحة وسهلة.</p>
+            </div>
+          </div>
+
+          <div class="contact-item"><div><strong>Phone</strong><span>01500309444</span></div><a class="btn btn-ghost" href="tel:+201500309444">Call</a></div>
+          <div class="contact-item"><div><strong>Instagram</strong><span>@azurea_trips</span></div><a class="btn btn-ghost" href="https://www.instagram.com/azurea_trips?igsh=MTl1dDQ4cjk3dWJvbw==" target="_blank" rel="noopener">Open</a></div>
+          <div class="contact-item"><div><strong>TikTok</strong><span>@azurea49</span></div><a class="btn btn-ghost" href="https://www.tiktok.com/@azurea49?_r=1&_t=ZS-97xIWeXSNy0" target="_blank" rel="noopener">Open</a></div>
+          <div class="contact-item"><div><strong>Telegram</strong><span>hurgada_sea_trips</span></div><a class="btn btn-ghost" href="https://t.me/boost/hurgada_sea_trips" target="_blank" rel="noopener">Open</a></div>
+
+          <div class="booking-banner">
+            <strong class="en">Build trust fast</strong><strong class="arabic">ابني ثقة بسرعة</strong>
+            <span class="en">Use real boat clips, real reviews, and a clear booking button.</span>
+            <span class="arabic">استخدم فيديوهات حقيقية وتقييمات حقيقية وزر حجز واضح.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="en">© 2026 Azurea Sea Trips • Hurghada, Egypt</div>
+      <div class="arabic">© 2026 أزوريا للرحلات البحرية • الغردقة، مصر</div>
+    </div>
+  </footer>
+
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const root = document.documentElement;
+
+    function setLang(lang){
+      const isArabic = lang === 'ar';
+      root.setAttribute('lang', isArabic ? 'ar' : 'en');
+      root.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+      document.querySelectorAll('.arabic').forEach(el => el.style.display = isArabic ? 'block' : 'none');
+      document.querySelectorAll('.en').forEach(el => el.style.display = isArabic ? 'none' : 'block');
+      langBtn.textContent = isArabic ? '🇺🇸 English' : '🇪🇬 العربية';
+      localStorage.setItem('azurea_lang', lang);
+    }
+
+    setLang(localStorage.getItem('azurea_lang') || 'en');
+
+    langBtn.addEventListener('click', () => {
+      const current = root.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+      setLang(current === 'ar' ? 'en' : 'ar');
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const trip = document.getElementById('trip').value;
+      const date = document.getElementById('date').value;
+      const guests = document.getElementById('guests').value;
+      const notes = document.getElementById('notes').value.trim();
+      const langChoice = document.getElementById('langChoice').value;
+
+      const message =
+`Hello Azurea Sea Trips,
+New booking request:
+Name: ${name}
+Phone: ${phone}
+Trip: ${trip}
+Date: ${date}
+Guests: ${guests}
+Language: ${langChoice}
+Notes: ${notes || 'None'}`;
+
+      const waNumber = '201500309444';
+      const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
